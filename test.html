@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!--强制使用最新的IE来渲染-->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="icon" href="logo.ico">
+    <title>测试页面</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-table.css">
+    <link rel="stylesheet" href="css/bootstrap-editable.css">
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/test1.js"></script>
+    <!--<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
+    <!--引入video.js-->
+    <link href="css/video-js.css" rel="stylesheet">
+    <script src="js/video.min.js"></script>
+    <!--引入videojs-contrib-hls-->
+    <script src="js/videojs-contrib-hls.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/jquery-form.js"></script>
+    <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-table.js"></script>
+    <script type="text/javascript" src="js/bootstrap-table-zh-CN.js"></script>
+    <script type="text/javascript" src="js/bootstrap-table-editable.js"></script>
+    <script type="text/javascript" src="js/bootstrap-editable.js"></script>
+    <script type="text/javascript" >
+    </script>
+</head>
+<body>
+<!--[if lte IE8]>
+<p class="browserUpgrade">版本太老请点击 <a href="http://browsehappy.com">这里</a> 更新！</p>
+<![endif]-->
+
+
+<div class="container">
+    <div class="config row">
+        <div class="col-lg-9 col-md-12">
+            <canvas id="configCan" width="800" height="600"></canvas>
+            <div>
+                <img id="configImg" src="img/user1.jpg" style="width: 800px;height: 600px;" />
+            </div>
+
+            <div id="drawLine">
+                <div id="clickZone" style="width: 800px;height: 600px;border: 1px solid black"></div>
+                <div id="survey">
+                    <!--<div id="su1" class="mini-box survey-can"></div>-->
+                    <!--<div id="su2" class="mini-box survey-can"></div>-->
+                    <!--<div id="su3" class="mini-box survey-can"></div>-->
+                    <!--<div id="su4" class="mini-box survey-can"></div>-->
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-12">
+            <div class="control">
+                <table>
+                    <tr>
+                        <td><button class="btn btn-default" onclick="drawAll('survey','lineSurvey','red')">绘制检测区</button></td>
+                        <td><button id="addSu" class="btn btn-default" title="添加锚点" onclick="addSu()"><span class="glyphicon glyphicon-plus"></span></button></td>
+                        <td><button id="reduceSu" class="btn btn-default" title="减少锚点" onclick="reduceSu()"><span class="glyphicon glyphicon-minus"></span></button></td>
+                    </tr>
+                    <tr><td colspan="3" class="notice-info"><button onclick="modifiers()">点击可进行绘制</button></td></tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
