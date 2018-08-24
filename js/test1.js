@@ -29,52 +29,60 @@ var drawCir = function () {
             if(cthat===null){
                 return;
             }
-            let x = e.pageX - ccurrentX;//移动时根据鼠标位置计算控件左上角的绝对位置
-            let y = e.pageY - ccurrentY;
-            $("#"+cthat.target.id).css({top: y, left: x});//控件新位置
-            let ctarget = targetId;
-            let po,cX,cY;
+            if(window.event.altKey&&cthat){
+                let x = e.pageX - ccurrentX;//移动时根据鼠标位置计算控件左上角的绝对位置
+                let y = e.pageY - ccurrentY;
+                $("#"+cthat.target.id).css({top: y, left: x});//控件新位置
+                let ctarget = targetId;
+                let po,cX,cY;
 
-            if(ctarget%2){
-                po = document.getElementById("po"+(ctarget+1)/2);
-                cX = parseInt($("#cir"+(ctarget+1)).css('left')) - parseInt($("#po"+(ctarget+1)/2).css('left'));
-                cY = parseInt($("#cir"+(ctarget+1)).css('top')) - parseInt($("#po"+(ctarget+1)/2).css('top'));
-                changeId = ctarget+1;
-            }else{
-                po = document.getElementById("po"+ctarget/2);
-                cX = parseInt($("#cir"+(ctarget-1)).css('left')) - parseInt($("#po"+ctarget/2).css('left'));
-                cY = parseInt($("#cir"+(ctarget-1)).css('top')) - parseInt($("#po"+ctarget/2).css('top'));
-                changeId = ctarget-1;
-            }
-            let X = parseInt(cthat.target.offsetLeft) -  parseInt(po.offsetLeft);
-            let Y = parseInt(cthat.target.offsetTop) - parseInt(po.offsetTop);
-            let sLength = Math.sqrt(X*X + Y*Y);
-            if(cId === null){
-                cId = ctarget;
-            }
-            if(cId !== ctarget){
-                cId = ctarget;
-                cIdChange = true;
-            }else{
-                cIdChange = false;
-            }
-            if(cLength===0||cIdChange){
-                cLength = parseInt(Math.sqrt(cX*cX + cY*cY));
-            }
-            let mul1 = (X/sLength).toFixed(2);
-            let mul2 = (Y/sLength).toFixed(2);
-            if(X>0){
-                if(mul2<0){
-                    $("#cir"+changeId).css({top:(po.offsetTop-(cLength*mul2)),left:(po.offsetLeft-(cLength*mul1))});
+                if(ctarget%2){
+                    po = document.getElementById("po"+(ctarget+1)/2);
+                    cX = parseInt($("#cir"+(ctarget+1)).css('left')) - parseInt($("#po"+(ctarget+1)/2).css('left'));
+                    cY = parseInt($("#cir"+(ctarget+1)).css('top')) - parseInt($("#po"+(ctarget+1)/2).css('top'));
+                    changeId = ctarget+1;
                 }else{
-                    $("#cir"+changeId).css({top:(po.offsetTop-(cLength*mul2)),left:(po.offsetLeft-(cLength*mul1))});
+                    po = document.getElementById("po"+ctarget/2);
+                    cX = parseInt($("#cir"+(ctarget-1)).css('left')) - parseInt($("#po"+ctarget/2).css('left'));
+                    cY = parseInt($("#cir"+(ctarget-1)).css('top')) - parseInt($("#po"+ctarget/2).css('top'));
+                    changeId = ctarget-1;
                 }
-            }else{
-                if(mul2<0){
-                    $("#cir"+changeId).css({top:(po.offsetTop-(cLength*mul2)),left:(po.offsetLeft-(cLength*mul1))});
+                let X = parseInt(cthat.target.offsetLeft) -  parseInt(po.offsetLeft);
+                let Y = parseInt(cthat.target.offsetTop) - parseInt(po.offsetTop);
+                let sLength = Math.sqrt(X*X + Y*Y);
+                if(cId === null){
+                    cId = ctarget;
+                }
+                if(cId !== ctarget){
+                    cId = ctarget;
+                    cIdChange = true;
                 }else{
-                    $("#cir"+changeId).css({top:(po.offsetTop-(cLength*mul2)),left:(po.offsetLeft-(cLength*mul1))});
+                    cIdChange = false;
                 }
+                if(cLength===0||cIdChange){
+                    cLength = parseInt(Math.sqrt(cX*cX + cY*cY));
+                }
+                let mul1 = (X/sLength).toFixed(2);
+                let mul2 = (Y/sLength).toFixed(2);
+                if(X>0){
+                    if(mul2<0){
+                        $("#cir"+changeId).css({top:(po.offsetTop-(cLength*mul2)),left:(po.offsetLeft-(cLength*mul1))});
+                    }else{
+                        $("#cir"+changeId).css({top:(po.offsetTop-(cLength*mul2)),left:(po.offsetLeft-(cLength*mul1))});
+                    }
+                }else{
+                    if(mul2<0){
+                        $("#cir"+changeId).css({top:(po.offsetTop-(cLength*mul2)),left:(po.offsetLeft-(cLength*mul1))});
+                    }else{
+                        $("#cir"+changeId).css({top:(po.offsetTop-(cLength*mul2)),left:(po.offsetLeft-(cLength*mul1))});
+                    }
+                }
+            }
+            if(window.event.ctrlKey&&cthat){
+                let target = parseInt(cthat.target.id.substring(3));
+                let x = e.pageX - ccurrentX;//移动时根据鼠标位置计算控件左上角的绝对位置
+                let y = e.pageY - ccurrentY;
+                $("#cir"+target).css({left:x,top:y});
             }
 
             drawPath();
