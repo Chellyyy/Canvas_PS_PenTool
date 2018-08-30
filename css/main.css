@@ -169,8 +169,12 @@ a:hover,a:active {
     display: inline-block;
     width: 10px;
     height: 10px;
-    background-color: #1984ec;
+    border: 1px solid #1984ec;
+    background-color: #ffffff;
     border-radius: 5px;
+}
+.mini-cir-down{
+    background-color: #1984ec;
 }
 #drawLine{
     top: 0;

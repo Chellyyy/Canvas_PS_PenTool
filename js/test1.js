@@ -14,6 +14,7 @@ var drawCir = function () {
     for (let i = 0; i < miniCirs.length; i++) {
         $("#"+miniCirs[i].id).off('click').on('click',function (e) {
             cFlag = false;
+            $(".mini-cir").removeClass("mini-cir-down");
         }).off('mousedown').on('mousedown',function (e) {
             cFlag = true;//移动标记
             if(cthat===null){
@@ -33,6 +34,7 @@ var drawCir = function () {
                 let x = e.pageX - ccurrentX;//移动时根据鼠标位置计算控件左上角的绝对位置
                 let y = e.pageY - ccurrentY;
                 $("#"+cthat.target.id).css({top: y, left: x});//控件新位置
+                $("#"+cthat.target.id).addClass("mini-cir-down");
                 let ctarget = targetId;
                 let po,cX,cY;
 
@@ -80,9 +82,11 @@ var drawCir = function () {
             }
             if(window.event.ctrlKey&&cthat){
                 let target = parseInt(cthat.target.id.substring(3));
+                $(".mini-cir").removeClass("mini-cir-down");
                 let x = e.pageX - ccurrentX;//移动时根据鼠标位置计算控件左上角的绝对位置
                 let y = e.pageY - ccurrentY;
                 $("#cir"+target).css({left:x,top:y});
+                $("#cir"+target).addClass("mini-cir-down");
             }
 
             drawPath();
@@ -228,6 +232,7 @@ var drawAll = function () {
             let x = e.pageX - currentX;//移动时根据鼠标位置计算控件左上角的绝对位置
             let y = e.pageY - currentY;
             $("#cir"+(target*2-1)).css({left:x,top:y});
+            $("#cir"+(target*2-1)).addClass("mini-cir-down");
             let po = document.getElementById("po"+target);
             let X = x - parseInt(po.offsetLeft);
             let Y = y - parseInt(po.offsetTop);
