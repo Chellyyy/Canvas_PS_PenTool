@@ -108,16 +108,6 @@ a:hover,a:active {
     width: 100%;
     margin-bottom: 15rem;
 }
-
-#suZone{
-    display: none;
-}
-#lineZone{
-    display: none;
-}
-#plaZone{
-    display: none;
-}
 .clearfix::after{
     visibility: hidden;
     clear: both;
@@ -139,32 +129,26 @@ a:hover,a:active {
 .control{
     padding: 0px 10px 10px 10px;
 }
-#survey{
-    visibility: hidden;
-}
-.mini-box-off{
-    background-color: #ffffff;
-}
-.mini-box{
+.mini-box{/*锚点样式*/
     width: 10px;
     height: 10px;
     background-color: #ffffff;
     border: 1px solid #1984ec;
     position: absolute;
 }
-.mini-box-down{
+.mini-box-down{/*锚点选中样式*/
     background-color: #1984ec;
 }
-.closeP{
+.closeP{/*闭合路径鼠标样式*/
     cursor:pointer;
 }
-.delP{
+.delP{/*删除锚点鼠标样式*/
     cursor:pointer;
 }
 .move{
     cursor: move;
 }
-.mini-cir{
+.mini-cir{/*圆点样式*/
     position: absolute;
     display: inline-block;
     width: 10px;
@@ -173,7 +157,7 @@ a:hover,a:active {
     background-color: #ffffff;
     border-radius: 5px;
 }
-.mini-cir-down{
+.mini-cir-down{/*圆点选中样式*/
     background-color: #1984ec;
 }
 #drawLine{
